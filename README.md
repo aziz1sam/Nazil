@@ -2,11 +2,24 @@
 
 **Download videos and audio directly to your Android phone.**
 
-[Download Nazil 1.9](https://github.com/aziz1sam/Nazil/releases/tag/v1.9.0) · [All releases](https://github.com/aziz1sam/Nazil/releases) · [Report a problem](https://github.com/aziz1sam/Nazil/issues)
+[Download Nazil 1.10](https://github.com/aziz1sam/Nazil/releases/tag/v1.10.0) · [All releases](https://github.com/aziz1sam/Nazil/releases) · [Report a problem](https://github.com/aziz1sam/Nazil/issues)
 
 Nazil is an Android video and audio downloader for public YouTube, Instagram, TikTok, and other links supported by its download engine. It has an Arabic interface, four themes, actual available quality options, and a local media library. Downloads and media processing run on the phone without a dedicated Nazil server or account.
 
-## What's new in 1.9
+## What's new in 1.10
+
+- **Independent colors:** choose background, card, action, text and progress colors using HEX codes or RGB sliders. Start from navy/cyan, ivory/jade, lavender/peach or graphite/amber and adjust freely.
+- **Your preferred order:** reorder 11 home sections and five navigation tabs using long-press dragging or arrow buttons. Hide optional items while essential actions and access to Settings remain available.
+- **Sizing and spacing:** adjust font scaling (80–140% on top of the system scale), download-button height (48–80 dp), corner radius (0–32 dp) and home spacing (6–28 dp).
+- **Download action placement:** pin it at the bottom or include it in the home section order.
+- **Named profiles:** save, load, update or delete up to 12 profiles. Preview drafts before applying; Cancel preserves the current appearance.
+- **Reset and backup:** reset appearance without deleting profiles or download settings. Optional backups now include appearance and profiles and still accept older backups.
+- **Readable controls:** automatic text contrast, a consistently readable customization editor and action buttons clear of Android's navigation bar.
+- The four original layouts remain available. Choosing a base design disables custom styling while retaining saved profiles.
+
+Open **Settings → Customize your interface** to get started.
+
+## Features retained from 1.9
 
 - **Batch links:** paste or share up to 50 public links, preview each source, choose the files and audio/video quality, then add the selected items to the queue. Equivalent links are deduplicated; existing requests and unavailable qualities are skipped. Failures are shown per link.
 - **File management:** rename the actual saved file while keeping its extension; select up to 100 files to share or delete, confirm deletion, and check the space used by available library files. Failed deletions keep their history records.
@@ -26,9 +39,9 @@ Requires **Android 10 or later**. Choose the APK matching your device:
 
 | Device | Full | Lite |
 | --- | --- | --- |
-| Most modern phones (ARM64) | [58.0 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-arm64.apk) | [22.3 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-lite-arm64.apk) |
-| Compatible 32-bit phones (ARMv7) | [51.3 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-armv7.apk) | [20.8 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-lite-armv7.apk) |
-| Compatible emulators/devices (x86_64) | [61.0 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-x86_64.apk) | [22.3 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-lite-x86_64.apk) |
+| Most modern phones (ARM64) | [58.1 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-arm64.apk) | [22.4 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-lite-arm64.apk) |
+| Compatible 32-bit phones (ARMv7) | [51.4 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-armv7.apk) | [20.9 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-lite-armv7.apk) |
+| Compatible emulators/devices (x86_64) | [61.1 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-x86_64.apk) | [22.4 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-lite-x86_64.apk) |
 
 Sizes use decimal MB. Full and Lite share the package and release signing certificate. Install over the previous version without uninstalling to retain app data. **From 1.7 or older, install the new APK manually once**; 1.8 and newer include the app updater under Settings.
 
@@ -46,9 +59,9 @@ The default folder is `Download/Nazil`; select another folder in Settings. Fast 
 
 ## Verification and limitations
 
-- **46 unit tests passed**. Across verification rounds, **29 distinct Full** and **24 distinct Lite** Android test cases passed. Following the final transport fix, seven targeted Lite download tests passed in one round; Full passed six, then its YouTube case passed in an isolated recheck after a format-unavailable response. Final lint reported no issues.
-- Both reported public Instagram reels and a public YouTube video downloaded with verified video/audio. Tests also cover network resume, fast video/audio downloads, capped downloading with the screen off, batch selection/cancellation, backup validation/restore, actual file operations, report preview and state after activity recreation.
-- Signed upgrade from 1.8 and switching Full → Lite → Full succeeded without uninstalling.
+- **50 unit tests passed for Full and Lite**. Across verification rounds, **34 distinct Android test cases per variant** passed. The seven customization cases were rerun successfully on the final builds after the navigation-inset fix. Release lint reported no issues.
+- Tests cover customization persistence, draft cancellation, profile limits, legacy backup migration, batch selection, file management, update validation, network resume and fast video/audio downloads. Current download checks used public sample video/audio; YouTube and Instagram examples were verified in 1.9 and were not repeated in this release.
+- Signed upgrade **1.9 → 1.10** and switching **Full → Lite → Full** retained settings and history without uninstalling.
 - Runtime tests used **Android 15 / API 35, x86_64, 4 KB pages**. ARM64 and ARMv7 APKs were built and signature-verified; physical-phone tests remain pending at the user's request. Android 10–13 and 16 KB devices were not tested in this round.
 - Sites can change their formats and availability. Successful examples do not guarantee every link, device, private content or protected media. Nazil does not include DRM bypass or site login.
 - Resume requires source support. Android controls background scheduling; reopening the app may be necessary after force-stop or reboot. User-paused requests stay paused.
@@ -56,17 +69,17 @@ The default folder is `Download/Nazil`; select another folder in Settings. Fast 
 - File operations in document or cloud folders depend on provider support and permissions. Unknown library sizes are marked as estimates.
 - The app updater's local APK validation and signed manual upgrade were tested. Installation end to end from a newer published GitHub release remains a later validation step.
 
-[Arabic validation report](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-validation.md) · [English release notes](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Release-notes-1.9.md) · [APK SHA-256 checksums](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/SHA256SUMS-1.9.txt)
+[Arabic validation report](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-update-report.md) · [Arabic and English release notes](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-release-notes.md) · [APK SHA-256 checksums](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/SHA256SUMS-1.10.txt)
 
 ## Screenshots
 
-| Batch links | Backup and restore | Problem report preview |
+| Customization editor | Color controls | Customized home |
 | --- | --- | --- |
-| ![Batch links](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-batch.png) | ![Backup settings](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-backup.png) | ![Report preview](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-report.png) |
+| ![Customization](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-customization.png) | ![Colors](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-colors.png) | ![Home](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-home.png) |
 
 ## Source and building
 
-Download **[Nazil-1.9-source.zip](https://github.com/aziz1sam/Nazil/releases/download/v1.9.0/Nazil-1.9-source.zip)** for the complete Android project. GitHub's automatically generated repository source archives contain this documentation repository.
+Download **[Nazil-1.10-source.zip](https://github.com/aziz1sam/Nazil/releases/download/v1.10.0/Nazil-1.10-source.zip)** for the complete Android project. GitHub's automatically generated repository source archives contain this documentation repository.
 
 Extract the archive and open `NazilAndroid` in Android Studio. The project uses JDK 17, Android SDK 35, Build Tools 34.0.0 and Gradle 8.9. The project README contains full build, test, licensing and signing instructions. A development key is included; the private release signing key and local SDK configuration are excluded.
 
