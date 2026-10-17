@@ -2,11 +2,19 @@
 
 **Download videos and audio directly to your Android phone.**
 
-[Download Nazil 1.12](https://github.com/aziz1sam/Nazil/releases/tag/v1.12.0) · [All releases](https://github.com/aziz1sam/Nazil/releases) · [Report a problem](https://github.com/aziz1sam/Nazil/issues)
+[Download Nazil 1.14](https://github.com/aziz1sam/Nazil/releases/tag/v1.14.0) · [All releases](https://github.com/aziz1sam/Nazil/releases) · [Report a problem](https://github.com/aziz1sam/Nazil/issues)
 
 Nazil is an Arabic Android downloader for public links supported by yt-dlp. Downloading and media processing run on the phone without a dedicated Nazil server or account. The existing four layouts, independent colors, rearrangeable sections and saved appearance profiles remain available.
 
-## What's new in 1.12
+## What's new in 1.14
+
+- **Square library:** choose **2, 3, 4 or 5 columns** from the fixed control above the library. The choice persists across relaunch/recreation and is included in settings backups; older backups default to two columns.
+- **Local media covers:** square thumbnails, compact titles and per-file menus with the full name/size, playback, share, selection, rename and confirmed deletion. Long-press to select; search, filters, sorting and the local player remain available.
+- **Automatic update notice:** opening or returning to the app checks for a newer stable GitHub release with a matching architecture and Full/Lite APK. Open details or dismiss that release's notice. Successful checks are limited to once daily; failed checks retry after one hour and remain quiet automatically.
+- **User-controlled installation:** metadata is cached locally; APK download starts on request. Existing size, SHA-256, package, version and certificate checks remain in place before Android's installer asks for approval. Existing users install 1.14 once to receive automatic notices for future releases. This is a foreground in-app notice, not a push service while Nazil is closed.
+- **Includes 1.13 navigation:** searchable RTL drawer and shortcuts, settings categories/search, preserved tab order/visibility, and a scrollable rail for wide windows. Existing colors/profiles remain; engine controls and the technical footer stay hidden.
+
+## Existing download and management features
 
 - **Automatic link analysis:** paste or share one link to see the title, thumbnail, available qualities and their sizes. Estimates and unknown sizes are labeled. Changing the link cancels outdated work; short-lived metadata caching reduces repeated analysis.
 - **Overall download progress:** combine video/audio bytes when their sizes are available, then show processing and saving separately. Completion is recorded after validation and successful publication.
@@ -25,11 +33,11 @@ This release also incorporates the previously prepared **1.11 stability improvem
 
 Requires **Android 10 or later**. Choose the architecture and variant matching your device:
 
-| Device | Full | Lite |
-| --- | --- | --- |
-| Most modern phones (ARM64) | [58.2 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-arm64.apk) | [22.5 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-lite-arm64.apk) |
-| Compatible 32-bit phones (ARMv7) | [51.5 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-armv7.apk) | [21.0 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-lite-armv7.apk) |
-| Compatible emulators/devices (x86_64) | [61.2 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-x86_64.apk) | [22.6 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-lite-x86_64.apk) |
+| الجهاز / Device | الكاملة / Full | الخفيفة / Lite |
+|---|---|---|
+| ARM64 | [58.3 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-arm64.apk) | [22.7 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-lite-arm64.apk) |
+| ARMv7 | [51.7 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-armv7.apk) | [21.1 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-lite-armv7.apk) |
+| x86_64 | [61.3 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-x86_64.apk) | [22.7 MB](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-lite-x86_64.apk) |
 
 Sizes use decimal MB. Full includes FFmpeg for broader supported conversion; Lite uses Android's MP4/AAC processing and is smaller. They share the package, version and signing certificate and can be installed over each other. Keep the architecture compatible with the phone.
 
@@ -46,7 +54,7 @@ Paste a link, review quality/size and tap Download. Fast Download uses a user-se
 
 ## Verification and limitations
 
-Both Full and Lite passed **68 JVM tests each**, Android Lint, and emulator runs reporting **57 tests on Android 15/API 35 (4 KB pages), 22 on Android 11/API 30 (4 KB), and 30 on Android 17/API 37 (16 KB)** per variant. These are repeated test runs across platforms, not 218 distinct tests. A signed upgrade from 1.11 to 1.12, including Full → Lite → Full, preserved the three completed records, settings and original installation time.
+Both Full and Lite passed **73 JVM tests each**, release Android Lint, **71 Android test cases on Android 15/API 35 (4 KB pages)** and **14 focused library/update/navigation cases on Android 17/API 37 (16 KB pages) per variant**. These are repeated executions across builds/platforms, not 170 distinct tests. Signed upgrade from 1.13 to 1.14 and Full → Lite → Full preserved all 28 history columns, three completed records, settings and the original installation time.
 
 - Runtime testing uses emulators; physical ARM phones remain untested at the user's request. ARM64/ARMv7 APKs are separately built and signature-verified.
 - On 16 KB systems the app uses Android's compatible MP4/AAC processing. Some bundled FFmpeg dependencies retain 4 KB alignment, so general Full-version conversions on 16 KB devices remain limited. Successful emulator examples do not certify every device or format.
@@ -56,24 +64,26 @@ Both Full and Lite passed **68 JVM tests each**, Android Lint, and emulator runs
 - The native player depends on the phone's codecs. It pauses when the app leaves the foreground; background-audio service features are outside this release.
 - File operations depend on document-provider capabilities and permissions. Unknown sizes are estimates. Safe cleanup deliberately retains parts belonging to resumable requests.
 
-[Arabic validation report](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-update-report.md) · [Arabic and English release notes](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-release-notes.md) · [APK checksums](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/SHA256SUMS-1.12.txt)
+[Arabic validation report](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-update-report.md) · [Arabic and English release notes](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-release-notes.md) · [APK checksums](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/SHA256SUMS-1.14.txt)
 
 ## Screenshots
 
-Actual emulator captures; the current visual design is retained. Home/player are from Lite on Android 17; Settings is signed Full on Android 15. The public sample clip is Big Buck Bunny via W3Schools.
+Actual Full development-build captures on Android 15 using ten local public-sample test clips (Big Buck Bunny via W3Schools), with the existing base palette. These are implemented UI screenshots, not generated design concepts.
 
-| Link analysis | Library player | Settings footer hidden |
-| --- | --- | --- |
-| ![Link analysis](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-home.png) | ![Library player](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-player.png) | ![Settings footer hidden](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-settings-bottom.png) |
+| 2 columns | 3 columns | 4 columns | 5 columns |
+|---|---|---|---|
+| ![2 columns](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-library-2.png) | ![3 columns](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-library-3.png) | ![4 columns](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-library-4.png) | ![5 columns](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-library-5.png) |
 
 ## Source and building
 
-Download **[Nazil-1.12-source.zip](https://github.com/aziz1sam/Nazil/releases/download/v1.12.0/Nazil-1.12-source.zip)** for the complete Android project. GitHub's automatic repository archives contain this documentation repository.
+Download **[Nazil-1.14-source.zip](https://github.com/aziz1sam/Nazil/releases/download/v1.14.0/Nazil-1.14-source.zip)** for the complete Android project. GitHub's automatic repository archives contain this documentation repository.
 
 Extract the archive and open `NazilAndroid` in Android Studio. Build with JDK 17, Android SDK 35, Build Tools 34.0.0 and Gradle 8.9. The project README contains build, test, licensing and signing instructions. The development key is included; the private release signing key and local SDK configuration are excluded.
 
 ## Privacy
 
-History, site defaults, appearance and playback positions are stored locally. Nazil connects to selected sources, official engine releases and this GitHub repository for update checks. It does not send history to a dedicated analytics server. Backup files contain history URLs; appearance-only exports do not include download history or destination permissions. Export/import and report sharing require user actions.
+History, site defaults, appearance and playback positions are stored locally. Nazil connects to selected sources, official engine releases and this GitHub repository for foreground automatic/manual update checks. It does not send history to a dedicated analytics server. Backup files contain history URLs; appearance-only exports do not include download history or destination permissions. Export/import and report sharing require user actions.
 
 For a problem report, include your Android/Nazil version and readable error. Add a public example link when appropriate; keep passwords and session data private.
+
+
